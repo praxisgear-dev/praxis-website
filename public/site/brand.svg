@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400">
+  <rect width="1200" height="1400" fill="#e5e1db"/>
+  <path d="M -50 1092 Q 360 588 744 924 T 1250 700" stroke="#bbb2a2" stroke-width="4" fill="none" opacity="0.4"/>
+  <path d="M -50 1232 Q 420 784.0000000000001 840 1064 T 1250 868" stroke="#dbd5c9" stroke-width="3" fill="none"/>
+  <circle cx="816.0000000000001" cy="560" r="224" fill="#dbd5c9" opacity="0.8"/>
+  <text x="600" y="1310" text-anchor="middle" font-family="Georgia, serif" font-size="44" fill="#bbb2a2" opacity="0.7">Why Praxis exists</text>
+  <text x="600" y="1356" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" letter-spacing="6" fill="#bbb2a2" opacity="0.4">BRAND PLACEHOLDER</text>
+</svg>

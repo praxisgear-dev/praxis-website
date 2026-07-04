@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125">
+  <rect width="900" height="1125" fill="#dddede"/>
+  <path d="M 100 865 Q 450 505 800 795" stroke="#434c5c" stroke-width="3" fill="none" opacity="0.5"/>
+      <circle cx="570" cy="655" r="90" fill="#a8acb3"/>
+      <path d="M 140 925 Q 450 645 760 865" stroke="#a8acb3" stroke-width="2" fill="none"/>
+  <text x="450" y="1029" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#434c5c" opacity="0.75">Long Run Tee</text>
+  <text x="450" y="1069" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" letter-spacing="4" fill="#434c5c" opacity="0.45">MOVEMENT — PLACEHOLDER</text>
+</svg>

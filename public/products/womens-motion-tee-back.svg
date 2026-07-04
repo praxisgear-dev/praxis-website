@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125">
+  <rect width="900" height="1125" fill="#d7d8da"/>
+  <rect x="280" y="300" width="340" height="470" rx="8" fill="#939aa6"/>
+      <line x1="450" y1="330" x2="450" y2="740" stroke="#1c2843" stroke-width="2" opacity="0.35"/>
+  <text x="450" y="1029" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#1c2843" opacity="0.75">Motion Tee</text>
+  <text x="450" y="1069" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" letter-spacing="4" fill="#1c2843" opacity="0.45">BACK — PLACEHOLDER</text>
+</svg>
