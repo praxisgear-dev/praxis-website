@@ -2,6 +2,7 @@
 
 import { useCart } from "./CartContext";
 import { formatPrice } from "@/lib/products";
+import { recordOrder } from "@/lib/store";
 
 export default function CartDrawer() {
   const cart = useCart();
@@ -75,6 +76,7 @@ export default function CartDrawer() {
               href={`https://wa.me/919999999999?text=${waText}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => recordOrder(cart.items, cart.total)}
               className="btn-primary w-full text-center"
             >
               Order via WhatsApp

@@ -114,27 +114,34 @@ const scenes = [
 ];
 
 function RunnerFigure() {
+  /* Forward-leaning sprinter, 2-frame stride:
+     A = flight/extension (front leg reaching, rear heel kicked up)
+     B = knee drive (front knee high, rear leg pushing off) */
   return (
     <svg
-      viewBox="-80 -90 180 220"
+      viewBox="-70 -62 140 168"
       className="runner-svg w-16 h-20 md:w-20 md:h-24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="5"
+      strokeWidth="6"
       strokeLinecap="round"
       strokeLinejoin="round"
     >
       <g className="pose-a">
-        <circle cx="14" cy="-56" r="15" />
-        <path d="M 8 -40 Q -2 -8 0 30" />
-        <path d="M 2 -20 L 36 0 L 62 -14 M 2 -20 L -30 -6 L -46 20" />
-        <path d="M 0 30 L 32 62 L 28 102 M 0 30 L -28 58 L -54 50" />
+        <circle cx="24" cy="-40" r="12" />
+        <path d="M 0 30 Q 4 2 17 -22" />
+        <path d="M 17 -22 L 44 -8 L 60 -30" />
+        <path d="M 17 -22 L -8 -10 L -20 16" />
+        <path d="M 0 30 L 32 54 L 52 88 L 62 85" />
+        <path d="M 0 30 L -24 48 L -46 62 L -52 70" />
       </g>
       <g className="pose-b">
-        <circle cx="14" cy="-56" r="15" />
-        <path d="M 8 -40 Q -2 -8 0 30" />
-        <path d="M 2 -20 L 32 -6 L 50 16 M 2 -20 L -32 -2 L -58 -12" />
-        <path d="M 0 30 L 10 72 L 40 86 M 0 30 L -32 54 L -38 94" />
+        <circle cx="24" cy="-40" r="12" />
+        <path d="M 0 30 Q 4 2 17 -22" />
+        <path d="M 17 -22 L 40 -4 L 46 24" />
+        <path d="M 17 -22 L -12 -16 L -34 -30" />
+        <path d="M 0 30 L 30 40 L 22 72 L 30 78" />
+        <path d="M 0 30 L -16 62 L -30 92 L -21 95" />
       </g>
     </svg>
   );

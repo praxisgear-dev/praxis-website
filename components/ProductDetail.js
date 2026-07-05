@@ -1,19 +1,37 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Slider from "./Slider";
 import SizeChart from "./SizeChart";
+import GenderSlider from "./GenderSlider";
 import { useCart } from "./CartContext";
 import { formatPrice, productImage, shotTypes } from "@/lib/products";
+import { useProducts, effectivePrice } from "@/lib/store";
 
 const sizes = ["S", "M", "L", "XL", "XXL"];
 
-export default function ProductDetail({ product }) {
+export default function ProductDetail({ product: staticProduct }) {
   const cart = useCart();
+  const router = useRouter();
+  const all = useProducts();
+  const product =
+    all.find((p) => p.slug === staticProduct.slug) || staticProduct;
+  const eff = effectivePrice(product);
+  const soldOut = product.inventory === 0;
+
   const [size, setSize] = useState(null);
   const [color, setColor] = useState(product.colors[0].name);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [error, setError] = useState(false);
+
+  function switchGender(g) {
+    if (g === product.gender) return;
+    const match =
+      all.find((p) => p.gender === g && p.type === product.type) ||
+      all.find((p) => p.gender === g);
+    if (match) router.push(`/products/${match.slug}`);
+  }
 
   function addToCart() {
     if (!size) {
@@ -21,7 +39,7 @@ export default function ProductDetail({ product }) {
       return;
     }
     setError(false);
-    cart.add(product, size, color);
+    cart.add({ ...product, price: eff }, size, color);
   }
 
   return (
@@ -29,12 +47,15 @@ export default function ProductDetail({ product }) {
       <div className="grid md:grid-cols-2 gap-10">
         {/* Gallery slider */}
         <Slider className="clay aspect-[4/5] overflow-hidden">
-          {shotTypes.map((shot) => (
+          {(product.images?.length
+            ? product.images
+            : shotTypes.map((s) => productImage(product.slug, s))
+          ).map((src, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              key={shot}
-              src={productImage(product.slug, shot)}
-              alt={`${product.name} — ${shot} view, line illustration`}
+              key={i}
+              src={src}
+              alt={`${product.name} — view ${i + 1}`}
               className="artwork w-full h-full object-contain p-6"
             />
           ))}
@@ -42,13 +63,28 @@ export default function ProductDetail({ product }) {
 
         {/* Buy panel */}
         <div className="md:sticky md:top-24 self-start">
+          <div className="mb-6">
+            <GenderSlider value={product.gender} onChange={switchGender} />
+          </div>
           <p className="eyebrow">
             {product.gender} · {product.type}
           </p>
           <h1 className="font-serif text-3xl md:text-4xl mt-2">
             {product.name}
           </h1>
-          <p className="text-lg mt-3">{formatPrice(product.price)}</p>
+          <p className="text-lg mt-3 flex items-center gap-3">
+            {formatPrice(eff)}
+            {product.discount > 0 && (
+              <>
+                <span className="text-sm text-muted line-through">
+                  {formatPrice(product.price)}
+                </span>
+                <span className="text-xs uppercase tracking-widecaps border border-ink rounded-full px-2 py-0.5">
+                  −{product.discount}%
+                </span>
+              </>
+            )}
+          </p>
 
           <p className="mt-6 text-sm leading-relaxed text-muted">
             {product.feeling}
@@ -106,9 +142,18 @@ export default function ProductDetail({ product }) {
             )}
           </div>
 
-          <button onClick={addToCart} className="btn-primary w-full mt-8">
-            Add to Cart
+          <button
+            onClick={addToCart}
+            disabled={soldOut}
+            className="btn-primary w-full mt-8 disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            {soldOut ? "Out of Stock" : "Add to Cart"}
           </button>
+          {product.inventory > 0 && product.inventory <= 5 && (
+            <p className="text-xs text-muted mt-2 text-center">
+              Only {product.inventory} left
+            </p>
+          )}
           <p className="text-xs text-muted mt-3">
             Free shipping above ₹1,499 · 7-day returns · Size exchange within
             14 days

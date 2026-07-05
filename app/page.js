@@ -6,9 +6,10 @@ import ProductCard from "@/components/ProductCard";
 import InstagramStrip from "@/components/InstagramStrip";
 import GenderSlider from "@/components/GenderSlider";
 import RunnerJourney from "@/components/RunnerJourney";
-import { products } from "@/lib/products";
+import { useProducts } from "@/lib/store";
 
 export default function HomePage() {
+  const products = useProducts();
   const [gender, setGender] = useState("Men");
   const featured = products
     .filter((p) => p.gender === gender)

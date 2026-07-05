@@ -5,12 +5,14 @@ import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import ArtToggle from "./ArtToggle";
 import CartDrawer from "./CartDrawer";
+import Logo from "./Logo";
 import { useCart } from "./CartContext";
 
 const nav = [
   { href: "/shop", label: "Shop" },
+  { href: "/events", label: "Events" },
   { href: "/our-story", label: "Our Story" },
-  { href: "/size-guide", label: "Size Guide" },
+  { href: "/testimonials", label: "Testimonials" },
 ];
 
 export default function Header() {
@@ -33,10 +35,13 @@ export default function Header() {
 
           <Link
             href="/"
-            className="font-serif text-2xl tracking-wide"
+            className="flex items-center gap-2.5"
             aria-label="Praxis home"
           >
-            PRAXIS
+            <Logo size={30} className="text-ink" />
+            <span className="font-serif text-xl tracking-[0.14em] hidden sm:inline">
+              PRAXIS
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -54,6 +59,16 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <ArtToggle />
             <ThemeToggle />
+            <Link
+              href="/account"
+              aria-label="Your account"
+              className="p-1.5 text-muted hover:text-ink transition-colors"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M 4 21 q 8 -7 16 0" />
+              </svg>
+            </Link>
             <button
               onClick={() => cart.setOpen(true)}
               className="relative text-sm text-muted hover:text-ink transition-colors"
@@ -81,6 +96,13 @@ export default function Header() {
                 {n.label}
               </Link>
             ))}
+            <Link
+              href="/account"
+              className="text-sm text-muted"
+              onClick={() => setMenuOpen(false)}
+            >
+              My Account
+            </Link>
             <Link
               href="/shipping-returns"
               className="text-sm text-muted"

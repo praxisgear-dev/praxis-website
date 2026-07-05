@@ -40,15 +40,15 @@ function teeArt(cx, cy, s = 1) {
 function runnerArt(cx, cy, s = 1, pose = "a") {
   const legs =
     pose === "a"
-      ? `<path d="M 0 34 L 34 66 L 30 108"/><path d="M 0 34 L -30 62 L -58 54"/>`
-      : `<path d="M 0 34 L 12 78 L 44 92"/><path d="M 0 34 L -34 58 L -40 100"/>`;
+      ? `<path d="M 0 30 L 32 54 L 52 88 L 62 85"/><path d="M 0 30 L -24 48 L -46 62 L -52 70"/>`
+      : `<path d="M 0 30 L 30 40 L 22 72 L 30 78"/><path d="M 0 30 L -16 62 L -30 92 L -21 95"/>`;
   const arms =
     pose === "a"
-      ? `<path d="M 2 -18 L 38 2 L 66 -14"/><path d="M 2 -18 L -32 -4 L -50 22"/>`
-      : `<path d="M 2 -18 L 34 -6 L 54 18"/><path d="M 2 -18 L -34 0 L -62 -12"/>`;
+      ? `<path d="M 17 -22 L 44 -8 L 60 -30"/><path d="M 17 -22 L -8 -10 L -20 16"/>`
+      : `<path d="M 17 -22 L 40 -4 L 46 24"/><path d="M 17 -22 L -12 -16 L -34 -30"/>`;
   return `<g transform="translate(${cx},${cy}) scale(${s})">
-    <circle cx="14" cy="-56" r="17"/>
-    <path d="M 8 -38 Q -2 -8 0 34"/>
+    <circle cx="24" cy="-40" r="13"/>
+    <path d="M 0 30 Q 4 2 17 -22"/>
     ${arms}${legs}
   </g>`;
 }

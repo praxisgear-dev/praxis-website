@@ -2,18 +2,22 @@ import Link from "next/link";
 import { formatPrice, productImage } from "@/lib/products";
 
 export default function ProductCard({ product }) {
+  const discounted =
+    product.discount > 0
+      ? Math.round(product.price * (1 - product.discount / 100))
+      : null;
   return (
     <Link href={`/products/${product.slug}`} className="group block">
       <div className="clay-sm relative overflow-hidden aspect-[4/5] p-5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={productImage(product.slug, "front")}
+          src={product.images?.[0] || productImage(product.slug, "front")}
           alt={`${product.name} — ${product.gender}'s running ${product.type.toLowerCase()}, line illustration`}
           className="artwork w-full h-full object-contain transition-opacity duration-300 group-hover:opacity-0"
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={productImage(product.slug, "movement")}
+          src={product.images?.[1] || productImage(product.slug, "movement")}
           alt=""
           aria-hidden="true"
           className="artwork absolute inset-5 w-[calc(100%-2.5rem)] h-[calc(100%-2.5rem)] object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -31,7 +35,18 @@ export default function ProductCard({ product }) {
             {product.gender} · {product.type}
           </p>
         </div>
-        <p className="text-sm">{formatPrice(product.price)}</p>
+        <p className="text-sm text-right">
+          {discounted ? (
+            <>
+              {formatPrice(discounted)}
+              <span className="block text-xs text-muted line-through">
+                {formatPrice(product.price)}
+              </span>
+            </>
+          ) : (
+            formatPrice(product.price)
+          )}
+        </p>
       </div>
       <div className="mt-2 flex gap-1.5 px-1">
         {product.colors.map((c) => (
