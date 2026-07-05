@@ -8,7 +8,12 @@ export default function ProductCard({ product }) {
       : null;
   return (
     <Link href={`/products/${product.slug}`} className="group block">
-      <div className="clay-sm relative overflow-hidden aspect-[4/5] p-5">
+      <div
+        className="clay-sm wave-on-hover relative overflow-hidden aspect-[4/5] p-5"
+        style={{
+          background: `color-mix(in srgb, ${product.colors[0].hex} 12%, var(--surface))`,
+        }}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={product.images?.[0] || productImage(product.slug, "front")}

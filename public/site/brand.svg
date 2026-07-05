@@ -1,11 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <g transform="translate(560,700) scale(3.2)">
-    <circle cx="24" cy="-40" r="13"/>
-    <path d="M 0 30 Q 4 2 17 -22"/>
-    <path d="M 17 -22 L 44 -8 L 60 -30"/><path d="M 17 -22 L -8 -10 L -20 16"/><path d="M 0 30 L 32 54 L 52 88 L 62 85"/><path d="M 0 30 L -24 48 L -46 62 L -52 70"/>
+    <g transform="translate(600,620) scale(2.2)">
+    <path d="M -60 -150 q 60 26 120 0 L 145 -95 L 110 -40 L 85 -62 L 85 150 L -85 150 L -85 -62 L -110 -40 L -145 -95 Z"/>
+    <path d="M -34 -148 q 34 34 68 0"/>
+    <path d="M -85 120 L 85 120" stroke-dasharray="6 8"/>
+    <path d="M 85 -62 L 85 -40"/>
+    <path d="M -85 -62 L -85 -40"/>
   </g>
-    <path d="M 80 1010 L 1120 1010"/>
-    <path d="M 120 1010 q 220 -260 440 -260 q 260 0 520 260" stroke-width="2" opacity="0.5"/>
-    <path d="M 260 1010 L 260 880 M 420 1010 L 420 800 M 600 1010 L 600 760 M 780 1010 L 780 800 M 940 1010 L 940 880" stroke-width="2" opacity="0.5"/>
-    <circle cx="950" cy="330" r="70" stroke-width="2"/>
+    <path d="M 80 1060 L 1120 1060"/>
+    <path d="M 140 1060 q 220 -240 460 -240 q 260 0 460 240" stroke-width="2" opacity="0.5"/>
+    <path d="M 300 1060 L 300 930 M 480 1060 L 480 860 M 660 1060 L 660 830 M 840 1060 L 840 880" stroke-width="2" opacity="0.5"/>
+    <circle cx="960" cy="260" r="70" stroke-width="2"/>
   </svg>

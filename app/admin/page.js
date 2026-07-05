@@ -233,6 +233,7 @@ function CustomProducts({ store, save }) {
             >
               <option>Shorts</option>
               <option>Tees</option>
+              <option>Jackets</option>
             </select>
             <input
               type="number"

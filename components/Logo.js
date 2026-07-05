@@ -1,5 +1,5 @@
-/* Minimalist SVG rendition of the Praxis mark —
-   two interlocking arcs forming a circle with a central S-curve. */
+/* Minimalist rendition of the Praxis mark — a circle formed by two
+   interlocking crescents, pinched through the centre by an S-curve. */
 export default function Logo({ size = 34, className = "", drawn = false }) {
   const d = drawn ? "draw" : "";
   return (
@@ -9,28 +9,28 @@ export default function Logo({ size = 34, className = "", drawn = false }) {
       height={size}
       fill="none"
       stroke="currentColor"
-      strokeWidth="7"
+      strokeWidth="8"
       strokeLinecap="round"
       className={className}
       aria-hidden="true"
     >
-      {/* left arc — opens top-right */}
+      {/* left crescent — sweeps from top gap around to bottom-right */}
       <path
         className={d}
-        style={drawn ? { "--dash": 220 } : undefined}
-        d="M 55 8 A 42 42 0 1 0 76 81"
+        style={drawn ? { "--dash": 240 } : undefined}
+        d="M 57 7 A 43 43 0 1 0 80 78"
       />
-      {/* right arc — opens bottom-left */}
+      {/* right crescent — sweeps from bottom gap around to top-left */}
       <path
         className={d}
-        style={drawn ? { "--dash": 220, animationDelay: "0.25s" } : undefined}
-        d="M 45 92 A 42 42 0 1 0 24 19"
+        style={drawn ? { "--dash": 240, animationDelay: "0.3s" } : undefined}
+        d="M 43 93 A 43 43 0 1 0 20 22"
       />
-      {/* central S-curve */}
+      {/* central S — connects the two tips through the middle */}
       <path
         className={d}
-        style={drawn ? { "--dash": 120, animationDelay: "0.5s" } : undefined}
-        d="M 62 14 Q 38 38 50 50 Q 62 62 38 86"
+        style={drawn ? { "--dash": 140, animationDelay: "0.6s" } : undefined}
+        d="M 57 7 Q 28 32 50 50 Q 72 68 43 93"
       />
     </svg>
   );

@@ -17,7 +17,7 @@ export default function GenderSlider({ value, onChange }) {
         <button
           key={o}
           onClick={() => onChange(o)}
-          className={`relative z-10 px-6 md:px-8 py-2 text-xs tracking-[0.14em] uppercase transition-colors duration-300 ${
+          className={`relative z-10 px-4 py-1.5 text-[10px] tracking-[0.14em] uppercase transition-colors duration-300 ${
             value === o ? "text-paper" : "text-muted hover:text-ink"
           }`}
         >

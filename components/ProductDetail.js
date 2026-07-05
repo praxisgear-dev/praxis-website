@@ -42,11 +42,25 @@ export default function ProductDetail({ product: staticProduct }) {
     cart.add({ ...product, price: eff }, size, color);
   }
 
+  const activeHex =
+    product.colors.find((c) => c.name === color)?.hex || product.colors[0].hex;
+
   return (
-    <div className="mx-auto max-w-6xl px-5 pt-8 md:pt-14">
+    <div
+      className="pt-8 md:pt-14 transition-colors duration-500"
+      style={{
+        background: `linear-gradient(180deg, color-mix(in srgb, ${activeHex} 18%, var(--paper)) 0%, var(--paper) 70%)`,
+      }}
+    >
+      <div className="mx-auto max-w-6xl px-5">
       <div className="grid md:grid-cols-2 gap-10">
         {/* Gallery slider */}
-        <Slider className="clay aspect-[4/5] overflow-hidden">
+        <Slider
+          className="clay wave-on-hover aspect-[4/5] overflow-hidden transition-colors duration-500"
+          style={{
+            background: `color-mix(in srgb, ${activeHex} 22%, var(--surface))`,
+          }}
+        >
           {(product.images?.length
             ? product.images
             : shotTypes.map((s) => productImage(product.slug, s))
@@ -233,6 +247,7 @@ export default function ProductDetail({ product: staticProduct }) {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

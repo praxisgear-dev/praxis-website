@@ -113,43 +113,19 @@ const scenes = [
   },
 ];
 
-function RunnerFigure() {
-  /* Forward-leaning sprinter, 2-frame stride:
-     A = flight/extension (front leg reaching, rear heel kicked up)
-     B = knee drive (front knee high, rear leg pushing off) */
-  return (
-    <svg
-      viewBox="-70 -62 140 168"
-      className="runner-svg w-16 h-20 md:w-20 md:h-24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <g className="pose-a">
-        <circle cx="24" cy="-40" r="12" />
-        <path d="M 0 30 Q 4 2 17 -22" />
-        <path d="M 17 -22 L 44 -8 L 60 -30" />
-        <path d="M 17 -22 L -8 -10 L -20 16" />
-        <path d="M 0 30 L 32 54 L 52 88 L 62 85" />
-        <path d="M 0 30 L -24 48 L -46 62 L -52 70" />
-      </g>
-      <g className="pose-b">
-        <circle cx="24" cy="-40" r="12" />
-        <path d="M 0 30 Q 4 2 17 -22" />
-        <path d="M 17 -22 L 40 -4 L 46 24" />
-        <path d="M 17 -22 L -12 -16 L -34 -30" />
-        <path d="M 0 30 L 30 40 L 22 72 L 30 78" />
-        <path d="M 0 30 L -16 62 L -30 92 L -21 95" />
-      </g>
-    </svg>
-  );
-}
+/* Product shown in each environment, in scene order:
+   forest, grassland, mountains, desert, rain, city */
+const sceneProducts = [
+  { img: "/products/mens-long-run-tee-front.svg", name: "Long Run Tee" },
+  { img: "/products/mens-tempo-shorts-front.svg", name: "Tempo Shorts" },
+  { img: "/products/womens-trail-jacket-front.svg", name: "Trail Jacket" },
+  { img: "/products/womens-split-shorts-front.svg", name: "Split Shorts" },
+  { img: "/products/mens-shield-jacket-front.svg", name: "Shield Jacket" },
+  { img: "/products/womens-pace-shorts-front.svg", name: "Pace Shorts" },
+];
 
 export default function RunnerJourney() {
   const containerRef = useRef(null);
-  const runnerRef = useRef(null);
   const labelRef = useRef(null);
   const sceneRefs = useRef([]);
 
@@ -172,9 +148,6 @@ export default function RunnerJourney() {
         if (node) node.style.opacity = o.toFixed(3);
       });
 
-      if (runnerRef.current) {
-        runnerRef.current.style.left = `${6 + p * 82}%`;
-      }
       if (labelRef.current) {
         labelRef.current.textContent = scenes[active].label;
       }
@@ -196,14 +169,14 @@ export default function RunnerJourney() {
   return (
     <section
       ref={containerRef}
-      aria-label="A runner crossing forests, grasslands, mountains, deserts, rain and cities"
+      aria-label="Praxis gear across forests, grasslands, mountains, deserts, rain and cities"
       style={{ height: `${scenes.length * 90 + 60}vh` }}
     >
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="absolute top-14 md:top-20 left-0 right-0 text-center px-6 z-10">
           <p className="eyebrow mb-2">Wherever you run</p>
           <h2 className="font-serif text-3xl md:text-5xl">
-            One pair of shorts.{" "}
+            Built for{" "}
             <span ref={labelRef} className="italic">
               Forests
             </span>
@@ -219,19 +192,18 @@ export default function RunnerJourney() {
             style={{ opacity: i === 0 ? 1 : 0 }}
           >
             {s.art}
+            {/* the product, centre stage in this environment */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center pt-16">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={sceneProducts[i].img}
+                alt={`${sceneProducts[i].name} line illustration in ${s.label.toLowerCase()}`}
+                className="artwork w-44 md:w-64 h-auto"
+              />
+              <p className="eyebrow mt-2">{sceneProducts[i].name}</p>
+            </div>
           </div>
         ))}
-
-        {/* Runner on the ground line (ground sits at 520/600 of scene svg height) */}
-        <div
-          ref={runnerRef}
-          className="absolute z-10"
-          style={{ left: "6%", bottom: "13.3%" }}
-        >
-          <div className="runner-bob text-ink" style={{ color: "var(--ink)" }}>
-            <RunnerFigure />
-          </div>
-        </div>
       </div>
     </section>
   );

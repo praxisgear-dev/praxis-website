@@ -233,24 +233,22 @@ img.artwork {
 }
 
 /* ------------------------------------------------------------------ */
-/* Runner figure — 2-frame stride cycle                                */
+/* Fabric wave — garments sway when the cursor passes over             */
 /* ------------------------------------------------------------------ */
-@keyframes strideA {
-  0%, 49.9% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+@keyframes fabricWave {
+  0% { transform: rotate(0deg) skewX(0deg) scale(1); }
+  22% { transform: rotate(1.4deg) skewX(2deg) scale(1.015); }
+  48% { transform: rotate(-1.1deg) skewX(-1.6deg) scale(1.01); }
+  74% { transform: rotate(0.7deg) skewX(1deg) scale(1.005); }
+  100% { transform: rotate(0deg) skewX(0deg) scale(1); }
 }
-@keyframes strideB {
-  0%, 49.9% { opacity: 0; }
-  50%, 100% { opacity: 1; }
+.wave-on-hover img {
+  transform-origin: 50% 12%;
+  will-change: transform;
 }
-.pose-a { animation: strideA 0.42s linear infinite; }
-.pose-b { animation: strideB 0.42s linear infinite; }
-
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+.wave-on-hover:hover img {
+  animation: fabricWave 1.5s ease-in-out infinite;
 }
-.runner-bob { animation: bob 0.42s ease-in-out infinite; }
 
 /* ------------------------------------------------------------------ */
 /* Loading                                                             */

@@ -1,3 +1,5 @@
+import Avatar from "@/components/Avatar";
+
 export const metadata = {
   title: "Testimonials | Praxis",
   description: "What runners say about Praxis shorts and tees.",
@@ -62,7 +64,7 @@ export default function TestimonialsPage() {
       </p>
 
       <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {testimonials.map((t) => (
+        {testimonials.map((t, i) => (
           <figure key={t.name} className="clay p-7 flex flex-col">
             <svg width="26" height="20" viewBox="0 0 26 20" fill="none" stroke="var(--ink)" strokeWidth="2" className="mb-4 opacity-40">
               <path d="M 2 18 Q 2 4 12 2 M 14 18 Q 14 4 24 2" />
@@ -70,10 +72,13 @@ export default function TestimonialsPage() {
             <blockquote className="text-sm leading-relaxed flex-1">
               {t.quote}
             </blockquote>
-            <figcaption className="mt-6 pt-4 border-t border-line">
-              <p className="text-sm">{t.name}</p>
-              <p className="text-xs text-muted mt-0.5">{t.detail}</p>
-              <p className="eyebrow mt-2">{t.product}</p>
+            <figcaption className="mt-6 pt-4 border-t border-line flex items-center gap-4">
+              <Avatar variant={i} size={52} className="text-ink shrink-0" />
+              <div>
+                <p className="text-sm">{t.name}</p>
+                <p className="text-xs text-muted mt-0.5">{t.detail}</p>
+                <p className="eyebrow mt-1.5">{t.product}</p>
+              </div>
             </figcaption>
           </figure>
         ))}

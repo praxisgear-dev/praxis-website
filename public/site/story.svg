@@ -1,10 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <g transform="translate(600,760) scale(3.4)">
-    <circle cx="24" cy="-40" r="13"/>
-    <path d="M 0 30 Q 4 2 17 -22"/>
-    <path d="M 17 -22 L 40 -4 L 46 24"/><path d="M 17 -22 L -12 -16 L -34 -30"/><path d="M 0 30 L 30 40 L 22 72 L 30 78"/><path d="M 0 30 L -16 62 L -30 92 L -21 95"/>
+    <g transform="translate(600,680) scale(2.1)">
+    <path d="M -110 -120 L 110 -120 L 130 90 L 40 100 L 0 -20 L -40 100 L -130 90 Z"/>
+    <path d="M -110 -95 L 110 -95"/>
+    <path d="M -18 -95 q 8 26 18 30 q 10 -4 18 -30" stroke-dasharray="6 7"/>
+    <path d="M -14 -78 q 14 18 28 0"/>
+    <path d="M 96 -40 L 120 -36"/>
+    <path d="M 84 30 L 122 38" stroke-dasharray="5 7"/>
+    <path d="M -84 30 L -122 38" stroke-dasharray="5 7"/>
   </g>
     <path d="M 100 1080 L 1100 1080"/>
-    <circle cx="600" cy="300" r="120" stroke-width="2"/>
-    <path d="M 430 300 l -90 0 M 770 300 l 90 0 M 600 130 l 0 -70 M 480 180 l -50 -50 M 720 180 l 50 -50" stroke-width="2"/>
+    <circle cx="600" cy="260" r="110" stroke-width="2"/>
+    <path d="M 448 260 l -80 0 M 752 260 l 80 0 M 600 108 l 0 -64 M 494 154 l -46 -46 M 706 154 l 46 -46" stroke-width="2"/>
   </svg>

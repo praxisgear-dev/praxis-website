@@ -8,13 +8,12 @@ import Slider from "@/components/Slider";
 import { formatPrice, productImage, allColors } from "@/lib/products";
 import { useProducts, effectivePrice } from "@/lib/store";
 
-const types = ["All", "Shorts", "Tees"];
+const types = ["All", "Shorts", "Tees", "Jackets"];
 
 export default function ShopPage() {
   const products = useProducts();
   const [gender, setGender] = useState("Men");
   const [type, setType] = useState("All");
-  const [view, setView] = useState("catalogue"); // catalogue | grid
 
   const filtered = useMemo(() => {
     return products
@@ -32,23 +31,7 @@ export default function ShopPage() {
             One piece at a time. Newest first.
           </p>
         </div>
-        <div className="flex items-center gap-4 flex-wrap">
-          <GenderSlider value={gender} onChange={setGender} />
-          <div className="flex items-center gap-2">
-            {["catalogue", "grid"].map((v) => (
-              <button
-                key={v}
-                onClick={() => setView(v)}
-                aria-label={`${v} view`}
-                className={`text-xs uppercase tracking-[0.14em] px-3 py-2 rounded-full transition-colors ${
-                  view === v ? "bg-ink text-paper" : "text-muted hover:text-ink"
-                }`}
-              >
-                {v}
-              </button>
-            ))}
-          </div>
-        </div>
+        <GenderSlider value={gender} onChange={setGender} />
       </div>
 
       <div className="mx-auto max-w-6xl px-5 mt-6 flex gap-3 flex-wrap">
@@ -71,15 +54,6 @@ export default function ShopPage() {
         <p className="text-sm text-muted mt-16 text-center">
           Nothing matches those filters yet.
         </p>
-      ) : view === "grid" ? (
-        <div
-          key={gender + type}
-          className="mx-auto max-w-6xl px-5 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-10 fade-up"
-        >
-          {filtered.map((p) => (
-            <ProductCard key={p.slug} product={p} />
-          ))}
-        </div>
       ) : (
         <div key={gender + type + "cat"} className="mt-8 fade-up">
           <Slider className="h-[72vh] min-h-[520px]">
@@ -104,7 +78,12 @@ function CatalogueSlide({ product, index, total }) {
   const move = product.images?.[1] || productImage(product.slug, "movement");
   return (
     <div className="h-full mx-auto max-w-6xl px-5 grid md:grid-cols-2 gap-8 items-center">
-      <div className="clay relative h-[38vh] md:h-[56vh] p-8 group overflow-hidden">
+      <div
+        className="clay wave-on-hover relative h-[38vh] md:h-[56vh] p-8 group overflow-hidden"
+        style={{
+          background: `color-mix(in srgb, ${product.colors[0].hex} 14%, var(--surface))`,
+        }}
+      >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={img}

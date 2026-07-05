@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
  * Minimal scroll-snap slider with dot navigation and optional autoplay.
  * children: array of slides (each rendered full-width).
  */
-export default function Slider({ children, autoplayMs = 0, className = "" }) {
+export default function Slider({ children, autoplayMs = 0, className = "", style }) {
   const trackRef = useRef(null);
   const [index, setIndex] = useState(0);
   const count = Array.isArray(children) ? children.length : 1;
@@ -35,7 +35,7 @@ export default function Slider({ children, autoplayMs = 0, className = "" }) {
   }, [index, autoplayMs, count]);
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative ${className}`} style={style}>
       <div ref={trackRef} className="slider-track h-full w-full">
         {(Array.isArray(children) ? children : [children]).map((child, i) => (
           <div key={i} className="slider-slide w-full h-full">

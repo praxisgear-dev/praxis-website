@@ -1,7 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(420,522.5) scale(2.4)">
-    <circle cx="24" cy="-40" r="13"/>
-    <path d="M 0 30 Q 4 2 17 -22"/>
-    <path d="M 17 -22 L 44 -8 L 60 -30"/><path d="M 17 -22 L -8 -10 L -20 16"/><path d="M 0 30 L 32 54 L 52 88 L 62 85"/><path d="M 0 30 L -24 48 L -46 62 L -52 70"/>
-  </g>
-      <path d="M 110 792.5 L 790 792.5" opacity="0.5"/>
-      <path d="M 160 462.5 l -70 0 M 180 512.5 l -110 0 M 170 562.5 l -80 0" stroke-width="2" opacity="0.55"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-7 450 522.5)"><g transform="translate(470,522.5) scale(1.6)">
+    <path d="M -60 -150 q 60 26 120 0 L 145 -95 L 110 -40 L 85 -62 L 85 150 L -85 150 L -85 -62 L -110 -40 L -145 -95 Z"/>
+    <path d="M -34 -148 q 34 34 68 0"/>
+    <path d="M -85 120 L 85 120" stroke-dasharray="6 8"/>
+    <path d="M 85 -62 L 85 -40"/>
+    <path d="M -85 -62 L -85 -40"/>
+  </g></g>
+      <path d="M 110 402.5 q 60 -16 120 0 M 70 482.5 q 80 -20 160 0 M 100 572.5 q 60 -14 110 0" stroke-width="2.5" opacity="0.6"/>
+      <path d="M 120 945 L 780 945" stroke-width="2" opacity="0.4"/>
+      <path d="M 580 945 L 660 825 L 740 945" stroke-width="2" opacity="0.4"/></svg>
