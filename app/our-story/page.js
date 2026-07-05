@@ -7,21 +7,14 @@ export const metadata = {
 export default function OurStoryPage() {
   return (
     <article>
-      <div className="relative h-[60vh] min-h-[400px]">
+      <div className="relative h-[56vh] min-h-[380px] flex items-center justify-center overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/site/story.svg"
-          alt="The founder of Praxis, mid-stride"
-          className="absolute inset-0 w-full h-full object-cover"
+          alt="Line drawing of a runner at sunrise"
+          className="artwork absolute inset-0 w-full h-full object-contain opacity-25 p-8"
         />
-        <div className="absolute inset-0 bg-black/25" />
-        <div className="relative h-full flex items-end">
-          <div className="mx-auto max-w-6xl px-5 pb-12 w-full">
-            <h1 className="font-serif text-4xl md:text-5xl text-white">
-              Our Story
-            </h1>
-          </div>
-        </div>
+        <h1 className="relative font-serif text-4xl md:text-6xl">Our Story</h1>
       </div>
 
       <div className="mx-auto max-w-2xl px-5 mt-16 text-[15px] leading-relaxed space-y-6">

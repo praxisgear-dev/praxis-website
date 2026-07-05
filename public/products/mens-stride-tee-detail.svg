@@ -1,8 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125">
-  <rect width="900" height="1125" fill="#dddede"/>
-  <circle cx="450" cy="522.5" r="180" fill="#a8acb3"/>
-      <circle cx="450" cy="522.5" r="110" fill="#dddede"/>
-      <circle cx="450" cy="522.5" r="109" fill="none" stroke="#434c5c" stroke-width="1.5" opacity="0.4"/>
-  <text x="450" y="1029" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#434c5c" opacity="0.75">Stride Tee</text>
-  <text x="450" y="1069" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" letter-spacing="4" fill="#434c5c" opacity="0.45">DETAIL — PLACEHOLDER</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="450" cy="522.5" r="230"/>
+      <path d="M 330 482.5 q 60 60 240 20" stroke-dasharray="8 10"/><path d="M 330 542.5 q 60 60 240 20" stroke-dasharray="8 10"/>
+      <path d="M 600 700.5 l 34 34" stroke-width="4"/></svg>

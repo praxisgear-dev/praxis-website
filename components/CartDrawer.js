@@ -22,7 +22,7 @@ export default function CartDrawer() {
         className="absolute inset-0 bg-black/40"
         onClick={() => cart.setOpen(false)}
       />
-      <aside className="absolute right-0 top-0 h-full w-full max-w-sm bg-paper flex flex-col">
+      <aside className="glass absolute right-0 top-0 h-full w-full max-w-sm flex flex-col">
         <div className="flex items-center justify-between px-5 h-16 border-b border-line">
           <p className="eyebrow">Your Cart</p>
           <button

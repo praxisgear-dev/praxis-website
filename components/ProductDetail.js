@@ -28,14 +28,14 @@ export default function ProductDetail({ product }) {
     <div className="mx-auto max-w-6xl px-5 pt-8 md:pt-14">
       <div className="grid md:grid-cols-2 gap-10">
         {/* Gallery slider */}
-        <Slider className="aspect-[4/5] bg-surface">
+        <Slider className="clay aspect-[4/5] overflow-hidden">
           {shotTypes.map((shot) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={shot}
               src={productImage(product.slug, shot)}
-              alt={`${product.name} — ${shot} view`}
-              className="w-full h-full object-cover"
+              alt={`${product.name} — ${shot} view, line illustration`}
+              className="artwork w-full h-full object-contain p-6"
             />
           ))}
         </Slider>
@@ -173,7 +173,7 @@ export default function ProductDetail({ product }) {
             className="absolute inset-0 bg-black/40"
             onClick={() => setShowSizeGuide(false)}
           />
-          <div className="relative bg-paper max-w-lg w-full p-6 md:p-8 max-h-[85vh] overflow-y-auto">
+          <div className="glass relative max-w-lg w-full rounded-3xl p-6 md:p-8 max-h-[85vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
               <h2 className="font-serif text-2xl">Size Guide</h2>
               <button

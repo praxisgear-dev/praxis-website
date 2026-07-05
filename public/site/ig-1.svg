@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
-  <rect width="800" height="800" fill="#bec0c4"/>
-  <path d="M -50 624 Q 240 336 496 528 T 850 400" stroke="#1b2945" stroke-width="4" fill="none" opacity="0.4"/>
-  <path d="M -50 704 Q 280 448.00000000000006 560 608 T 850 496" stroke="#7a8190" stroke-width="3" fill="none"/>
-  <circle cx="544" cy="320" r="128" fill="#7a8190" opacity="0.8"/>
-  <text x="400" y="710" text-anchor="middle" font-family="Georgia, serif" font-size="44" fill="#1b2945" opacity="0.7">@praxis.gear</text>
-  <text x="400" y="756" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" letter-spacing="6" fill="#1b2945" opacity="0.4">INSTAGRAM POST 1</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M 160 480 q 40 -110 120 -120 q 60 40 130 40 q 40 30 130 46 q 110 12 100 66 l -6 30 q -240 30 -474 0 Z"/><path d="M 300 372 l 26 30 M 350 386 l 26 28 M 400 396 l 24 26" stroke-width="2.5"/></svg>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+import ArtToggle from "./ArtToggle";
 import CartDrawer from "./CartDrawer";
 import { useCart } from "./CartContext";
 
@@ -18,7 +19,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-paper/95 backdrop-blur border-b border-line">
+      <header className="glass sticky top-0 z-40 border-b border-line">
         <div className="mx-auto max-w-6xl px-5 h-16 flex items-center justify-between">
           <button
             className="md:hidden p-2 -ml-2"
@@ -51,6 +52,7 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <ArtToggle />
             <ThemeToggle />
             <button
               onClick={() => cart.setOpen(true)}

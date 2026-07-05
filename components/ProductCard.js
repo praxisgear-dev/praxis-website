@@ -4,27 +4,27 @@ import { formatPrice, productImage } from "@/lib/products";
 export default function ProductCard({ product }) {
   return (
     <Link href={`/products/${product.slug}`} className="group block">
-      <div className="relative overflow-hidden bg-surface aspect-[4/5]">
+      <div className="clay-sm relative overflow-hidden aspect-[4/5] p-5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={productImage(product.slug, "front")}
-          alt={`${product.name} — ${product.gender}'s running ${product.type.toLowerCase()}`}
-          className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+          alt={`${product.name} — ${product.gender}'s running ${product.type.toLowerCase()}, line illustration`}
+          className="artwork w-full h-full object-contain transition-opacity duration-300 group-hover:opacity-0"
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={productImage(product.slug, "movement")}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="artwork absolute inset-5 w-[calc(100%-2.5rem)] h-[calc(100%-2.5rem)] object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         />
         {product.isNew && (
-          <span className="absolute top-3 left-3 text-[10px] tracking-widecaps uppercase bg-paper text-ink px-2 py-1">
+          <span className="absolute top-4 left-4 text-[10px] tracking-widecaps uppercase border border-ink text-ink rounded-full px-2.5 py-1">
             New
           </span>
         )}
       </div>
-      <div className="mt-3 flex items-start justify-between gap-2">
+      <div className="mt-3 flex items-start justify-between gap-2 px-1">
         <div>
           <p className="text-sm">{product.name}</p>
           <p className="text-xs text-muted mt-0.5">
@@ -33,7 +33,7 @@ export default function ProductCard({ product }) {
         </div>
         <p className="text-sm">{formatPrice(product.price)}</p>
       </div>
-      <div className="mt-2 flex gap-1.5">
+      <div className="mt-2 flex gap-1.5 px-1">
         {product.colors.map((c) => (
           <span
             key={c.name}

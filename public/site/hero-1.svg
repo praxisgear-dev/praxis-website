@@ -1,8 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-  <rect width="1920" height="1080" fill="#bec0c4"/>
-  <path d="M -50 842.4 Q 576 453.59999999999997 1190.4 712.8000000000001 T 1970 540" stroke="#1b2945" stroke-width="4" fill="none" opacity="0.4"/>
-  <path d="M -50 950.4 Q 672 604.8000000000001 1344 820.8 T 1970 669.6" stroke="#7a8190" stroke-width="3" fill="none"/>
-  <circle cx="1305.6000000000001" cy="432" r="172.8" fill="#7a8190" opacity="0.8"/>
-  <text x="960" y="990" text-anchor="middle" font-family="Georgia, serif" font-size="44" fill="#1b2945" opacity="0.7">Morning miles, Ellis Bridge</text>
-  <text x="960" y="1036" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" letter-spacing="6" fill="#1b2945" opacity="0.4">HERO PLACEHOLDER — REPLACE WITH RUNNING PHOTOGRAPH</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(960,620) scale(3)">
+    <circle cx="14" cy="-56" r="17"/>
+    <path d="M 8 -38 Q -2 -8 0 34"/>
+    <path d="M 2 -18 L 38 2 L 66 -14"/><path d="M 2 -18 L -32 -4 L -50 22"/><path d="M 0 34 L 34 66 L 30 108"/><path d="M 0 34 L -30 62 L -58 54"/>
+  </g><path d="M 200 880 L 1720 880"/></svg>

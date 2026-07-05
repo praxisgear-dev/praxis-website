@@ -19,13 +19,13 @@ export default function InstagramStrip() {
             href="https://instagram.com/praxis.gear"
             target="_blank"
             rel="noopener noreferrer"
-            className="block aspect-square bg-surface overflow-hidden"
+            className="clay-sm block aspect-square overflow-hidden p-3"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={`/site/ig-${i}.svg`}
               alt={`Praxis on Instagram, post ${i}`}
-              className="w-full h-full object-cover hover:opacity-85 transition-opacity"
+              className="artwork w-full h-full object-contain hover:opacity-75 transition-opacity"
             />
           </a>
         ))}

@@ -2,6 +2,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SplashScreen from "@/components/SplashScreen";
 import { CartProvider } from "@/components/CartContext";
 
 export const metadata = {
@@ -16,6 +17,9 @@ const themeScript = `
     var t = localStorage.getItem("praxis-theme");
     if (t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
       document.documentElement.classList.add("dark");
+    }
+    if (localStorage.getItem("praxis-art") === "on") {
+      document.documentElement.classList.add("art");
     }
   } catch (e) {}
 })();
@@ -38,6 +42,8 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
+        <div className="art-aurora" aria-hidden="true" />
+        <SplashScreen />
         <CartProvider>
           <Header />
           <main className="min-h-screen">{children}</main>

@@ -1,8 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125">
-  <rect width="900" height="1125" fill="#dddede"/>
-  <path d="M 100 865 Q 450 505 800 795" stroke="#434c5c" stroke-width="3" fill="none" opacity="0.5"/>
-      <circle cx="570" cy="655" r="90" fill="#a8acb3"/>
-      <path d="M 140 925 Q 450 645 760 865" stroke="#a8acb3" stroke-width="2" fill="none"/>
-  <text x="450" y="1029" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#434c5c" opacity="0.75">Stride Tee</text>
-  <text x="450" y="1069" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" letter-spacing="4" fill="#434c5c" opacity="0.45">MOVEMENT — PLACEHOLDER</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(420,522.5) scale(2.4)">
+    <circle cx="14" cy="-56" r="17"/>
+    <path d="M 8 -38 Q -2 -8 0 34"/>
+    <path d="M 2 -18 L 38 2 L 66 -14"/><path d="M 2 -18 L -32 -4 L -50 22"/><path d="M 0 34 L 34 66 L 30 108"/><path d="M 0 34 L -30 62 L -58 54"/>
+  </g>
+      <path d="M 110 792.5 L 790 792.5" opacity="0.5"/>
+      <path d="M 160 462.5 l -70 0 M 180 512.5 l -110 0 M 170 562.5 l -80 0" stroke-width="2" opacity="0.55"/></svg>

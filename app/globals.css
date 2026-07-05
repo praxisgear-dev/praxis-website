@@ -2,22 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ------------------------------------------------------------------ */
+/* Palette — black & white base                                        */
+/* ------------------------------------------------------------------ */
 :root {
   --paper: #ffffff;
-  --ink: #1a1a1a;
-  --accent: #1c2b4a;
+  --ink: #111111;
+  --accent: #111111;
   --muted: #6b6b6b;
-  --line: #f2f2f2;
-  --surface: #fafafa;
+  --line: #ececec;
+  --surface: #f7f7f7;
+
+  --glow-1: #ff2d92;
+  --glow-2: #8b3dff;
+  --glow-3: #ffb300;
+  --glow-4: #00e0ff;
+
+  --clay-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.18),
+    inset 2px 2px 6px rgba(255, 255, 255, 0.85),
+    inset -3px -4px 8px rgba(0, 0, 0, 0.06);
+  --clay-shadow-sm: 0 8px 18px -10px rgba(0, 0, 0, 0.16),
+    inset 1.5px 1.5px 4px rgba(255, 255, 255, 0.8),
+    inset -2px -3px 6px rgba(0, 0, 0, 0.05);
 }
 
 .dark {
-  --paper: #121418;
-  --ink: #f2f1ee;
-  --accent: #a8bcdf;
-  --muted: #9b9b9b;
-  --line: #23262c;
-  --surface: #181b20;
+  --paper: #0a0a0a;
+  --ink: #f4f4f4;
+  --accent: #f4f4f4;
+  --muted: #969696;
+  --line: #1f1f1f;
+  --surface: #141414;
+
+  --clay-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.65),
+    inset 2px 2px 6px rgba(255, 255, 255, 0.06),
+    inset -3px -4px 8px rgba(0, 0, 0, 0.5);
+  --clay-shadow-sm: 0 8px 18px -10px rgba(0, 0, 0, 0.6),
+    inset 1.5px 1.5px 4px rgba(255, 255, 255, 0.05),
+    inset -2px -3px 6px rgba(0, 0, 0, 0.45);
 }
 
 html {
@@ -29,15 +51,172 @@ body {
   color: var(--ink);
   font-family: "DM Sans", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--ink);
   color: var(--paper);
 }
 
-/* Scroll-snap slider */
+/* ------------------------------------------------------------------ */
+/* Glassmorphism                                                       */
+/* ------------------------------------------------------------------ */
+.glass {
+  background: color-mix(in srgb, var(--paper) 62%, transparent);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Claymorphism                                                        */
+/* ------------------------------------------------------------------ */
+.clay {
+  background: var(--surface);
+  border-radius: 1.5rem;
+  box-shadow: var(--clay-shadow);
+}
+.clay-sm {
+  background: var(--surface);
+  border-radius: 1.1rem;
+  box-shadow: var(--clay-shadow-sm);
+}
+
+/* ------------------------------------------------------------------ */
+/* Line-art images — invert in dark, glow in art mode                  */
+/* ------------------------------------------------------------------ */
+img.artwork {
+  transition: filter 0.4s ease;
+}
+.dark img.artwork {
+  filter: invert(1);
+}
+.art img.artwork {
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--glow-2) 45%, transparent));
+}
+.art.dark img.artwork {
+  filter: invert(1)
+    drop-shadow(0 0 10px color-mix(in srgb, var(--glow-1) 55%, transparent));
+}
+
+/* ------------------------------------------------------------------ */
+/* Art mode — the page comes alive                                     */
+/* ------------------------------------------------------------------ */
+.art-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  background:
+    radial-gradient(38% 34% at 18% 22%, color-mix(in srgb, var(--glow-1) 22%, transparent), transparent 70%),
+    radial-gradient(42% 38% at 82% 18%, color-mix(in srgb, var(--glow-2) 22%, transparent), transparent 70%),
+    radial-gradient(40% 42% at 70% 85%, color-mix(in srgb, var(--glow-4) 18%, transparent), transparent 70%),
+    radial-gradient(34% 30% at 22% 82%, color-mix(in srgb, var(--glow-3) 16%, transparent), transparent 70%);
+  background-size: 200% 200%;
+  animation: aurora 16s ease-in-out infinite alternate;
+}
+.art .art-aurora {
+  opacity: 1;
+}
+@keyframes aurora {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.art .hero-title {
+  background: linear-gradient(100deg, var(--glow-1), var(--glow-2), var(--glow-4), var(--glow-3));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 7s ease infinite alternate;
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.art .clay,
+.art .clay-sm {
+  box-shadow: var(--clay-shadow),
+    0 0 24px -6px color-mix(in srgb, var(--glow-2) 35%, transparent);
+}
+
+/* Scene colors in art mode */
+.scene-svg {
+  color: var(--ink);
+  transition: color 0.6s ease;
+}
+.art .scene-forest .scene-svg { color: #34d399; }
+.art .scene-grassland .scene-svg { color: #a3e635; }
+.art .scene-mountains .scene-svg { color: #818cf8; }
+.art .scene-desert .scene-svg { color: #fbbf24; }
+.art .scene-rain .scene-svg { color: #38bdf8; }
+.art .scene-city .scene-svg { color: #f472b6; }
+.art .runner-svg {
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--glow-1) 70%, transparent));
+}
+
+/* ------------------------------------------------------------------ */
+/* Buttons                                                             */
+/* ------------------------------------------------------------------ */
+.btn-primary {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.875rem 2.25rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.btn-primary:hover {
+  opacity: 0.86;
+}
+.art .btn-primary {
+  background: linear-gradient(120deg, var(--glow-1), var(--glow-2) 55%, var(--glow-4));
+  color: #fff;
+  box-shadow: 0 0 22px -4px color-mix(in srgb, var(--glow-1) 65%, transparent);
+}
+
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  border-radius: 9999px;
+  padding: 0.875rem 2.25rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ------------------------------------------------------------------ */
+/* Sliders (scroll-snap)                                               */
+/* ------------------------------------------------------------------ */
 .slider-track {
   display: flex;
   overflow-x: auto;
@@ -53,52 +232,70 @@ body {
   flex-shrink: 0;
 }
 
-.eyebrow {
-  font-size: 0.6875rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
+/* ------------------------------------------------------------------ */
+/* Runner figure — 2-frame stride cycle                                */
+/* ------------------------------------------------------------------ */
+@keyframes strideA {
+  0%, 49.9% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes strideB {
+  0%, 49.9% { opacity: 0; }
+  50%, 100% { opacity: 1; }
+}
+.pose-a { animation: strideA 0.42s linear infinite; }
+.pose-b { animation: strideB 0.42s linear infinite; }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.runner-bob { animation: bob 0.42s ease-in-out infinite; }
+
+/* ------------------------------------------------------------------ */
+/* Loading                                                             */
+/* ------------------------------------------------------------------ */
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+.loader-ring {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  border-top-color: var(--ink);
+  animation: spinRing 0.9s linear infinite;
+}
+.art .loader-ring {
+  border-top-color: var(--glow-1);
+  box-shadow: 0 0 18px -4px color-mix(in srgb, var(--glow-1) 60%, transparent);
 }
 
-.btn-primary {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--paper);
-  padding: 0.875rem 2.25rem;
-  font-size: 0.8125rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  transition: opacity 0.2s ease;
+@keyframes trackIn {
+  from { letter-spacing: 0.7em; opacity: 0; }
+  to { letter-spacing: 0.28em; opacity: 1; }
 }
-.btn-primary:hover {
-  opacity: 0.88;
+.splash-word {
+  animation: trackIn 1.1s cubic-bezier(0.2, 0.7, 0.3, 1) both;
 }
-
-.btn-outline {
-  display: inline-block;
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  padding: 0.875rem 2.25rem;
-  font-size: 0.8125rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  transition: background 0.2s ease, color 0.2s ease;
+@keyframes splashOut {
+  to { opacity: 0; visibility: hidden; }
 }
-.btn-outline:hover {
-  background: var(--ink);
-  color: var(--paper);
+.splash-leaving {
+  animation: splashOut 0.5s ease both;
 }
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.fade-up {
-  animation: fadeUp 0.7s ease both;
+.fade-up { animation: fadeUp 0.7s ease both; }
+
+@keyframes drawLine {
+  from { stroke-dashoffset: var(--dash, 600); }
+  to { stroke-dashoffset: 0; }
+}
+.draw {
+  stroke-dasharray: var(--dash, 600);
+  animation: drawLine 2.2s ease forwards;
 }

@@ -1,95 +1,103 @@
+"use client";
+
 import Link from "next/link";
-import Slider from "@/components/Slider";
+import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import InstagramStrip from "@/components/InstagramStrip";
+import GenderSlider from "@/components/GenderSlider";
+import RunnerJourney from "@/components/RunnerJourney";
 import { products } from "@/lib/products";
 
-const heroSlides = [
-  {
-    img: "/site/hero-1.svg",
-    title: "Built to Move.",
-    sub: "Running gear made for Indian roads, tracks and weather.",
-  },
-  {
-    img: "/site/hero-2.svg",
-    title: "Practice. Action. Doing.",
-    sub: "That's what Praxis means. That's all it means.",
-  },
-  {
-    img: "/site/hero-3.svg",
-    title: "Designed by someone who runs.",
-    sub: "Every seam tested on Ahmedabad mornings.",
-  },
-];
-
 export default function HomePage() {
-  const featured = products.filter((p) => p.isNew).slice(0, 3);
-  const secondRow = products.filter((p) => !p.isNew).slice(0, 3);
+  const [gender, setGender] = useState("Men");
+  const featured = products
+    .filter((p) => p.gender === gender)
+    .sort((a, b) => new Date(b.added) - new Date(a.added))
+    .slice(0, 4);
 
   return (
     <>
-      {/* Section 1 — Hero slider */}
-      <section className="h-[88vh] min-h-[520px]">
-        <Slider autoplayMs={6000} className="h-full">
-          {heroSlides.map((s) => (
-            <div key={s.title} className="relative h-full w-full">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={s.img}
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/25" />
-              <div className="relative h-full flex flex-col items-center justify-center text-center px-6 fade-up">
-                <h1 className="font-serif text-4xl md:text-6xl text-white">
-                  {s.title}
-                </h1>
-                <p className="mt-4 text-white/85 text-sm md:text-base max-w-md">
-                  {s.sub}
-                </p>
-                <Link
-                  href="/shop"
-                  className="btn-primary mt-8 !bg-white !text-[#1a1a1a]"
-                >
-                  Shop Now
-                </Link>
-              </div>
-            </div>
-          ))}
-        </Slider>
+      {/* Hero — typographic, line art */}
+      <section className="relative h-[88vh] min-h-[540px] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+        <svg
+          viewBox="0 0 1920 1080"
+          className="absolute inset-0 w-full h-full opacity-[0.13]"
+          preserveAspectRatio="xMidYMax slice"
+          fill="none"
+          stroke="var(--ink)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        >
+          <path d="M -40 880 L 1960 880" />
+          <path d="M 100 880 q 380 -420 760 -420 q 420 0 960 420" strokeWidth="2" />
+          <path d="M 340 880 L 340 690 M 620 880 L 620 560 M 960 880 L 960 480 M 1300 880 L 1300 560 M 1580 880 L 1580 690" strokeWidth="2" />
+          <circle cx="1560" cy="240" r="90" strokeWidth="2" />
+        </svg>
+
+        <div className="relative fade-up">
+          <p className="eyebrow mb-5">Praxis — Indian activewear for runners</p>
+          <h1 className="hero-title font-serif text-5xl md:text-7xl leading-tight">
+            Built to Move.
+          </h1>
+          <p className="mt-5 text-sm md:text-base text-muted max-w-md mx-auto">
+            Designed by someone who runs. Built for people who actually move.
+            Tested every morning on Ahmedabad roads.
+          </p>
+          <div className="mt-9 flex items-center justify-center gap-4">
+            <Link href="/shop" className="btn-primary">
+              Shop Now
+            </Link>
+            <Link href="/our-story" className="btn-outline">
+              Our Story
+            </Link>
+          </div>
+        </div>
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted text-xs tracking-[0.2em] uppercase animate-bounce">
+          Scroll
+        </div>
       </section>
 
-      {/* Section 2 — Featured products */}
-      <section className="mx-auto max-w-6xl px-5 mt-20 md:mt-28">
-        <div className="flex items-baseline justify-between mb-8">
-          <h2 className="font-serif text-2xl md:text-3xl">New this season</h2>
-          <Link href="/shop" className="text-sm text-muted hover:text-ink">
-            View all →
-          </Link>
+      {/* Scroll journey — runner across landscapes */}
+      <RunnerJourney />
+
+      {/* Featured products with Men/Women slider */}
+      <section className="mx-auto max-w-6xl px-5 mt-4 md:mt-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div>
+            <p className="eyebrow mb-2">The gear</p>
+            <h2 className="font-serif text-3xl md:text-4xl">New this season</h2>
+          </div>
+          <GenderSlider value={gender} onChange={setGender} />
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <div key={gender} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 fade-up">
           {featured.map((p) => (
             <ProductCard key={p.slug} product={p} />
           ))}
         </div>
+        <div className="mt-10 text-center">
+          <Link href="/shop" className="btn-outline">
+            View all products
+          </Link>
+        </div>
       </section>
 
-      {/* Section 3 — Brand statement */}
+      {/* Brand statement */}
       <section className="mx-auto max-w-6xl px-5 mt-24 md:mt-32 grid md:grid-cols-2 gap-10 items-center">
-        <div className="aspect-[6/7] bg-surface overflow-hidden">
+        <div className="clay overflow-hidden aspect-[6/7] flex items-center justify-center p-8">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/site/brand.svg"
-            alt="Praxis — designed in Ahmedabad"
-            className="w-full h-full object-cover"
+            alt="Line drawing of a runner crossing a bridge"
+            className="artwork w-full h-full object-contain"
           />
         </div>
         <div className="max-w-md">
           <p className="eyebrow mb-4">Why Praxis</p>
           <p className="font-serif text-2xl md:text-3xl leading-snug">
-            I trained as a fashion designer, spent two years at Athlos
-            learning how activewear is really made, and came home to
-            Ahmedabad to build the running gear I couldn't find here.
+            I trained as a fashion designer, spent two years at Athlos learning
+            how activewear is really made, and came home to Ahmedabad to build
+            the running gear I couldn't find here.
           </p>
           <Link
             href="/our-story"
@@ -100,34 +108,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section 4 — Campaign image + second product row */}
-      <section className="mt-24 md:mt-32">
-        <div className="relative h-[52vh] min-h-[360px]">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/site/campaign.svg"
-            alt="Praxis campaign — built in Ahmedabad"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/20" />
-          <div className="relative h-full flex items-end">
-            <div className="mx-auto max-w-6xl px-5 pb-10 w-full">
-              <h2 className="font-serif text-3xl md:text-4xl text-white">
-                Made for the miles you actually run.
-              </h2>
-            </div>
-          </div>
-        </div>
-        <div className="mx-auto max-w-6xl px-5 mt-12">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {secondRow.map((p) => (
-              <ProductCard key={p.slug} product={p} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 5 — Instagram strip */}
+      {/* Instagram strip */}
       <div className="mt-24 md:mt-32">
         <InstagramStrip />
       </div>

@@ -1,7 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125">
-  <rect width="900" height="1125" fill="#dbdad9"/>
-  <rect x="280" y="300" width="340" height="470" rx="8" fill="#a1a2a2"/>
-      <line x1="450" y1="330" x2="450" y2="740" stroke="#35383c" stroke-width="2" opacity="0.35"/>
-  <text x="450" y="1029" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#35383c" opacity="0.75">Split Shorts</text>
-  <text x="450" y="1069" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" letter-spacing="4" fill="#35383c" opacity="0.45">BACK — PLACEHOLDER</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" fill="none" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><g transform="scale(-1,1) translate(-900,0)"><g transform="translate(450,522.5) scale(1.9)">
+    <path d="M -110 -120 L 110 -120 L 130 90 L 40 100 L 0 -20 L -40 100 L -130 90 Z"/>
+    <path d="M -110 -95 L 110 -95"/>
+    <path d="M -18 -95 q 8 26 18 30 q 10 -4 18 -30" stroke-dasharray="6 7"/>
+    <path d="M -14 -78 q 14 18 28 0"/>
+    <path d="M 96 -40 L 120 -36" />
+    <path d="M 84 30 L 122 38" stroke-dasharray="5 7"/>
+    <path d="M -84 30 L -122 38" stroke-dasharray="5 7"/>
+  </g></g>
+      <circle cx="450" cy="482.5" r="10" stroke-width="2"/></svg>
