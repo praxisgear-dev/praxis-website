@@ -1,34 +1,38 @@
 import Link from "next/link";
-import { formatPrice, productImage } from "@/lib/products";
+import { formatPrice, cardImages } from "@/lib/products";
 
 export default function ProductCard({ product }) {
   const discounted =
     product.discount > 0
       ? Math.round(product.price * (1 - product.discount / 100))
       : null;
+  const { primary, secondary, real } = cardImages(product);
+  const imgClass = real
+    ? "w-full h-full object-cover"
+    : "artwork w-full h-full object-contain";
   return (
     <Link href={`/products/${product.slug}`} className="group block">
       <div
-        className="clay-sm wave-on-hover relative overflow-hidden aspect-[4/5] p-5"
+        className={`clay-sm ${real ? "photo-zoom" : "wave-on-hover"} relative overflow-hidden aspect-[4/5]`}
         style={{
           background: `color-mix(in srgb, ${product.colors[0].hex} 12%, var(--surface))`,
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={product.images?.[0] || productImage(product.slug, "front")}
-          alt={`${product.name} — ${product.gender}'s running ${product.type.toLowerCase()}, line illustration`}
-          className="artwork w-full h-full object-contain transition-opacity duration-300 group-hover:opacity-0"
+          src={primary}
+          alt={`${product.name} — ${product.gender}'s running ${product.type.toLowerCase()}`}
+          className={`${imgClass} absolute inset-0 ${real ? "" : "p-5"} transition-opacity duration-300 group-hover:opacity-0`}
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={product.images?.[1] || productImage(product.slug, "movement")}
+          src={secondary}
           alt=""
           aria-hidden="true"
-          className="artwork absolute inset-5 w-[calc(100%-2.5rem)] h-[calc(100%-2.5rem)] object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className={`${imgClass} absolute inset-0 ${real ? "" : "p-5"} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
         />
         {product.isNew && (
-          <span className="absolute top-4 left-4 text-[10px] tracking-widecaps uppercase border border-ink text-ink rounded-full px-2.5 py-1">
+          <span className="absolute top-4 left-4 z-10 text-[10px] tracking-widecaps uppercase glass rounded-full px-2.5 py-1">
             New
           </span>
         )}

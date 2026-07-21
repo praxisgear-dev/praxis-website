@@ -242,12 +242,21 @@ img.artwork {
   74% { transform: rotate(0.7deg) skewX(1deg) scale(1.005); }
   100% { transform: rotate(0deg) skewX(0deg) scale(1); }
 }
-.wave-on-hover img {
+.wave-on-hover img,
+img.wave-on-hover {
   transform-origin: 50% 12%;
   will-change: transform;
 }
-.wave-on-hover:hover img {
+.wave-on-hover:hover img,
+img.wave-on-hover:hover {
   animation: fabricWave 1.5s ease-in-out infinite;
+}
+/* Real-photo cards get a gentle zoom rather than a fabric skew */
+.photo-zoom img {
+  transition: transform 0.6s ease;
+}
+.photo-zoom:hover img {
+  transform: scale(1.05);
 }
 
 /* ------------------------------------------------------------------ */

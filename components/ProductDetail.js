@@ -6,7 +6,7 @@ import Slider from "./Slider";
 import SizeChart from "./SizeChart";
 import GenderSlider from "./GenderSlider";
 import { useCart } from "./CartContext";
-import { formatPrice, productImage, shotTypes } from "@/lib/products";
+import { formatPrice, galleryItems } from "@/lib/products";
 import { useProducts, effectivePrice } from "@/lib/store";
 
 const sizes = ["S", "M", "L", "XL", "XXL"];
@@ -54,25 +54,43 @@ export default function ProductDetail({ product: staticProduct }) {
     >
       <div className="mx-auto max-w-6xl px-5">
       <div className="grid md:grid-cols-2 gap-10">
-        {/* Gallery slider */}
+        {/* Gallery slider — video first (if any), then photos or line art */}
         <Slider
-          className="clay wave-on-hover aspect-[4/5] overflow-hidden transition-colors duration-500"
+          className="clay aspect-[4/5] overflow-hidden transition-colors duration-500"
           style={{
             background: `color-mix(in srgb, ${activeHex} 22%, var(--surface))`,
           }}
         >
-          {(product.images?.length
-            ? product.images
-            : shotTypes.map((s) => productImage(product.slug, s))
-          ).map((src, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              key={i}
-              src={src}
-              alt={`${product.name} — view ${i + 1}`}
-              className="artwork w-full h-full object-contain p-6"
-            />
-          ))}
+          {galleryItems(product).map((item, i) =>
+            item.type === "video" ? (
+              <video
+                key={i}
+                src={item.src}
+                poster={item.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              />
+            ) : item.type === "photo" ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={i}
+                src={item.src}
+                alt={`${product.name} — view ${i + 1}`}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={i}
+                src={item.src}
+                alt={`${product.name} — view ${i + 1}`}
+                className="artwork wave-on-hover w-full h-full object-contain p-6"
+              />
+            )
+          )}
         </Slider>
 
         {/* Buy panel */}

@@ -6,6 +6,7 @@ import ProductCard from "@/components/ProductCard";
 import InstagramStrip from "@/components/InstagramStrip";
 import GenderSlider from "@/components/GenderSlider";
 import RunnerJourney from "@/components/RunnerJourney";
+import HeroWeave from "@/components/HeroWeave";
 import { useProducts } from "@/lib/store";
 
 export default function HomePage() {
@@ -20,20 +21,7 @@ export default function HomePage() {
     <>
       {/* Hero — typographic, line art */}
       <section className="relative h-[88vh] min-h-[540px] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-        <svg
-          viewBox="0 0 1920 1080"
-          className="absolute inset-0 w-full h-full opacity-[0.13]"
-          preserveAspectRatio="xMidYMax slice"
-          fill="none"
-          stroke="var(--ink)"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-        >
-          <path d="M -40 880 L 1960 880" />
-          <path d="M 100 880 q 380 -420 760 -420 q 420 0 960 420" strokeWidth="2" />
-          <path d="M 340 880 L 340 690 M 620 880 L 620 560 M 960 880 L 960 480 M 1300 880 L 1300 560 M 1580 880 L 1580 690" strokeWidth="2" />
-          <circle cx="1560" cy="240" r="90" strokeWidth="2" />
-        </svg>
+        <HeroWeave />
 
         <div className="relative fade-up">
           <p className="eyebrow mb-5">Praxis — Indian activewear for runners</p>
@@ -80,6 +68,38 @@ export default function HomePage() {
           <Link href="/shop" className="btn-outline">
             View all products
           </Link>
+        </div>
+      </section>
+
+      {/* Campaign accent — the shoe */}
+      <section className="mx-auto max-w-6xl px-5 mt-24 md:mt-32">
+        <div className="clay relative overflow-hidden grid md:grid-cols-2 items-center">
+          <div className="p-8 md:p-14 order-2 md:order-1">
+            <p className="eyebrow mb-3">Coming soon</p>
+            <h2 className="font-serif text-3xl md:text-4xl leading-tight">
+              The first Praxis shoe.
+            </h2>
+            <p className="text-sm text-muted mt-4 max-w-sm">
+              Two years in the making. A cushioned daily trainer built for
+              Indian roads and Indian feet. Join the list to be first in line.
+            </p>
+            <a
+              href="https://wa.me/919999999999?text=Notify%20me%20about%20the%20Praxis%20shoe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary mt-7"
+            >
+              Notify me
+            </a>
+          </div>
+          <div className="order-1 md:order-2 photo-zoom overflow-hidden h-64 md:h-96">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/media/shoe.jpg"
+              alt="The first Praxis running shoe"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
       </section>
 

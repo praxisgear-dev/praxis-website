@@ -5,7 +5,7 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import GenderSlider from "@/components/GenderSlider";
 import Slider from "@/components/Slider";
-import { formatPrice, productImage, allColors } from "@/lib/products";
+import { formatPrice, cardImages, allColors } from "@/lib/products";
 import { useProducts, effectivePrice } from "@/lib/store";
 
 const types = ["All", "Shorts", "Tees", "Jackets"];
@@ -74,30 +74,32 @@ export default function ShopPage() {
 
 function CatalogueSlide({ product, index, total }) {
   const eff = effectivePrice(product);
-  const img = product.images?.[0] || productImage(product.slug, "front");
-  const move = product.images?.[1] || productImage(product.slug, "movement");
+  const { primary, secondary, real } = cardImages(product);
+  const imgClass = real
+    ? "w-full h-full object-cover"
+    : "artwork w-full h-full object-contain p-8";
   return (
     <div className="h-full mx-auto max-w-6xl px-5 grid md:grid-cols-2 gap-8 items-center">
       <div
-        className="clay wave-on-hover relative h-[38vh] md:h-[56vh] p-8 group overflow-hidden"
+        className={`clay ${real ? "photo-zoom" : "wave-on-hover"} relative h-[38vh] md:h-[56vh] group overflow-hidden`}
         style={{
           background: `color-mix(in srgb, ${product.colors[0].hex} 14%, var(--surface))`,
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={img}
-          alt={`${product.name} line illustration`}
-          className="artwork w-full h-full object-contain transition-opacity duration-300 group-hover:opacity-0"
+          src={primary}
+          alt={product.name}
+          className={`${imgClass} absolute inset-0 transition-opacity duration-300 group-hover:opacity-0`}
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={move}
+          src={secondary}
           alt=""
           aria-hidden="true"
-          className="artwork absolute inset-8 w-[calc(100%-4rem)] h-[calc(100%-4rem)] object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className={`${imgClass} absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
         />
-        <span className="absolute top-5 left-6 font-serif text-lg text-muted">
+        <span className="absolute top-5 left-6 z-10 font-serif text-lg text-muted mix-blend-difference">
           {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </span>
       </div>
